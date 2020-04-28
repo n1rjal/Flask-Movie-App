@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+  <br>
+  <div class="alert alert-primary" role="alert">
+    <h3>Search Results</h3>
+  </div>
+
+  <div class="row row-cols-1 row-cols-md-3">
+    {% for each in results %}
+    <div class="col mb-4">
+      <div class="card">
+        <img src="{{each['Poster']}}" class="card-img-top" id="card-img-top{{loop.index}}" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"  id="title{{loop.index}}">{{each["Title"]}}</h5>
+          <p class="card-text">Year :<span id="year{{loop.index}}"> {{each['Year']}}</span><br>
+          </p>
+          <p>
+            Type :<span id="type{{loop.index}}">{{each['Type']}}</span> <br>
+          </p>
+          <p id="details">
+            Imdb : <a id="imdb{{loop.index}}" href="http://www.imdb.com/title/{{each['imdbID']}}">
+            Details</a>
+          </p>
+          <br>
+            <button type="button" count={{loop.index}} class="btn btn-primary" id="btn:{{loop.index}}" onclick="favadder(this.id)" style="color: white;">Add to Favourite</button>
+         </div>
+      </div>
+    </div>
+    {% endfor %}
+</div>
+</div>
+{%endblock%}

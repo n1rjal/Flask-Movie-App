@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+
+
+{% block title %} Homepage {% endblock %}
+
+{% block content %}
+
+
+{%with msg=get_flashed_messages()%}
+  {%if msg%}
+  {%for each in msg%}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      
+      {{each}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {%endfor%}
+  {%endif%}
+{%endwith%}
+
+<!-- Container -->
+<div class="container">
+  <br>
+    <!-- Search form-->
+    <form action="/search" method="post" >
+      <div class="input-group">
+        <input name="title" class="form-control " placeholder="Enter Movie Name" required />
+          <div class="input-group-btn">
+            <button class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+          </div>
+      </div>
+    </form>
+</div>
+{% endblock %}
